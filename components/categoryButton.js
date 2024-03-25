@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
 
-const housingIcon = require('./assets/housing.png');
+const housingIcon = require('../assets/housing.png');
 
 const CategoryButton = ({ iconName, title, onPress, color }) => {
   const buttonStyles = [styles.button, { backgroundColor: color }];
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
-    width: 92,
+    width: '22%',
     height: 92,
     // backgroundColor: '#D0C6E1',
     borderRadius: 10,

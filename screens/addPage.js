@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import CategoryButton from '../components/categoryButton';
 import CalculatorButton from '../components/calculatorButton';
 
@@ -30,55 +30,59 @@ const App = () => {
   };
 
   const categories = [
-    { id: 'Housing', title: 'Housing', iconName: require('./assets/housing.png'), color: '#D0C6E1' },
-    { id: 'Household', title: 'Household', iconName: require('./assets/household.png'), color: '#F1EBF2' },
-    { id: 'Utilities', title: 'Utilities', iconName: require('./assets/utilities.png'), color: '#C4D3EB' },
-    { id: 'Transport', title: 'Transport', iconName: require('./assets/transport.png'), color: '#D0ECF3' },
-    { id: 'Food', title: 'Food', iconName: require('./assets/food.png'), color: '#BCE1D6' },
-    { id: 'Health', title: 'Health', iconName: require('./assets/health.png'), color: '#C5E1BA' },
-    { id: 'Education', title: 'Education', iconName: require('./assets/education.png'), color: '#F5C4DB' },
-    { id: 'Appearance', title: 'Appearance', iconName: require('./assets/appearance.png'), color: '#F7E8E4' },
-    { id: 'Lifestyle', title: 'Lifestyle', iconName: require('./assets/lifestyle.png'), color: '#F4EB85' },
-    { id: 'Service Fee', title: 'Service Fee', iconName: require('./assets/service fee.png'), color: '#FFD6A1' },
+    { id: 'Housing', title: 'Housing', iconName: require('../assets/housing.png'), color: '#D0C6E1' },
+    { id: 'Household', title: 'Household', iconName: require('../assets/household.png'), color: '#F1EBF2' },
+    { id: 'Utilities', title: 'Utilities', iconName: require('../assets/utilities.png'), color: '#C4D3EB' },
+    { id: 'Transport', title: 'Transport', iconName: require('../assets/transport.png'), color: '#D0ECF3' },
+    { id: 'Food', title: 'Food', iconName: require('../assets/food.png'), color: '#BCE1D6' },
+    { id: 'Health', title: 'Health', iconName: require('../assets/health.png'), color: '#C5E1BA' },
+    { id: 'Education', title: 'Education', iconName: require('../assets/education.png'), color: '#F5C4DB' },
+    { id: 'Appearance', title: 'Appearance', iconName: require('../assets/appearance.png'), color: '#F7E8E4' },
+    { id: 'Lifestyle', title: 'Lifestyle', iconName: require('../assets/lifestyle.png'), color: '#F4EB85' },
+    { id: 'Service Fee', title: 'Service Fee', iconName: require('../assets/service fee.png'), color: '#FFD6A1' },
     // maybe need more info
   ];
 
   return (
     <View style={styles.container}>
-      {/* Top navigation bar */}
-      <View style={styles.navBar}>
-        <Text style={styles.navTitle}>Add</Text>
-      </View>
+      <ScrollView style={styles.scrollView}>
+        {/* Black top bar */}
+        {/* <View style={styles.topBar}></View> */}
+        {/* Top navigation bar */}
+        <View style={styles.navBar}>
+          <Text style={styles.navTitle}>Add</Text>
+        </View>
 
-      {/* Category buttons */}
-      <View style={styles.categoryContainer}>
-        {categories.map((category) => (
-          <CategoryButton
-            key={category.id}
-            iconName={category.iconName}
-            title={category.title}
-            onPress={() => handleCategoryPress(category.id)}
-            color={category.color}
-          />
-        ))}
-      </View>
+        {/* Category buttons */}
+        <View style={styles.categoryContainer}>
+          {categories.map((category) => (
+            <CategoryButton
+              key={category.id}
+              iconName={category.iconName}
+              title={category.title}
+              onPress={() => handleCategoryPress(category.id)}
+              color={category.color}
+            />
+          ))}
+        </View>
 
-      {/* Display for the input value */}
-      <Text style={styles.inputDisplay}>{inputValue}</Text>
+        {/* Display for the input value */}
+        <Text style={styles.inputDisplay}>{inputValue}</Text>
 
-      {/* Description input */}
-      <TextInput style={styles.descriptionInput} placeholder="Description" />
+        {/* Description input */}
+        <TextInput style={styles.descriptionInput} placeholder="Description" />
 
-      {/* Numeric keypad */}
-      <View style={styles.keypad}>
-        {calculatorButtons.map((button) => (
-          <CalculatorButton
-            key={button}
-            label={button}
-            onPress={handleButtonPress}
-          />
-        ))}
-      </View>
+        {/* Numeric keypad */}
+        <View style={styles.keypad}>
+          {calculatorButtons.map((button) => (
+            <CalculatorButton
+              key={button}
+              label={button}
+              onPress={handleButtonPress}
+            />
+          ))}
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -87,6 +91,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  topBar: {
+    height: 50,
+    backgroundColor: '#000', // Set background color to black
+  },
+  scrollView: {
+    flex: 1,
   },
   navBar: {
     paddingTop: 50,
